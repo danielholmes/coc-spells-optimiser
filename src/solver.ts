@@ -12,7 +12,7 @@ import {
 import type {DefenderLayout} from "./layout";
 import type {SpellCapacity, TownHallLevel} from "./townHallLevels";
 import {createArrayOf} from "./array";
-import {Spell} from "./spells";
+import type {Spell} from "./spells";
 
 function findAllSpellPermutationsForAmount(
   capacity: SpellCapacity,
