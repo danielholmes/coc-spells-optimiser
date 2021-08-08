@@ -6,3 +6,14 @@
 
 Note: Assumes you have max level lightning and earthquake spells for your town hall level and that you have
 access to max level donation spells for your town hall level.
+
+
+## Future Ideas
+
+ - Get some graphics in (e.g. army screen from in game)
+ - Show how much damage done by each spell (useful for EQs)
+ - Have a tool to put in an arbitrary set of spells to see total damage (able to explore some double eq options)
+ - Use town halls as presets and have individual configurable spell levels
+ - Show town hall level next to air defs
+ - Add other structures (i.e. sweepers and infernos)
+ - Ability to add another defence which is reachable by an EQ
