@@ -1,12 +1,11 @@
-import { _ as _isIterateeCall } from '../common/_isIterateeCall-ec2eca23.js';
-import { t as toFinite_1 } from '../common/toFinite-b360e75b.js';
-import '../common/_isIndex-0aa1c40e.js';
+import { _ as _isIterateeCall } from '../common/_isIterateeCall-3d37a6e3.js';
+import { t as toFinite_1 } from '../common/toFinite-3c87ca82.js';
+import '../common/_isIndex-ba156ebf.js';
 import '../common/_commonjsHelpers-7b5f3d4c.js';
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
 var nativeCeil = Math.ceil,
     nativeMax = Math.max;
-
 /**
  * The base implementation of `_.range` and `_.rangeRight` which doesn't
  * coerce arguments.
@@ -18,6 +17,7 @@ var nativeCeil = Math.ceil,
  * @param {boolean} [fromRight] Specify iterating from right to left.
  * @returns {Array} Returns the range of numbers.
  */
+
 function baseRange(start, end, step, fromRight) {
   var index = -1,
       length = nativeMax(nativeCeil((end - start) / (step || 1)), 0),
@@ -27,6 +27,7 @@ function baseRange(start, end, step, fromRight) {
     result[fromRight ? length : ++index] = start;
     start += step;
   }
+
   return result;
 }
 
@@ -39,20 +40,25 @@ var _baseRange = baseRange;
  * @param {boolean} [fromRight] Specify iterating from right to left.
  * @returns {Function} Returns the new range function.
  */
+
+
 function createRange(fromRight) {
-  return function(start, end, step) {
+  return function (start, end, step) {
     if (step && typeof step != 'number' && _isIterateeCall(start, end, step)) {
       end = step = undefined;
-    }
-    // Ensure the sign of `-0` is preserved.
+    } // Ensure the sign of `-0` is preserved.
+
+
     start = toFinite_1(start);
+
     if (end === undefined) {
       end = start;
       start = 0;
     } else {
       end = toFinite_1(end);
     }
-    step = step === undefined ? (start < end ? 1 : -1) : toFinite_1(step);
+
+    step = step === undefined ? start < end ? 1 : -1 : toFinite_1(step);
     return _baseRange(start, end, step, fromRight);
   };
 }
@@ -100,8 +106,9 @@ var _createRange = createRange;
  * _.range(0);
  * // => []
  */
-var range = _createRange();
 
+
+var range = _createRange();
 var range_1 = range;
 
 export default range_1;

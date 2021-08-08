@@ -1,6 +1,6 @@
-import { t as toFinite_1 } from '../common/toFinite-b360e75b.js';
-import { _ as _isIterateeCall } from '../common/_isIterateeCall-ec2eca23.js';
-import '../common/_isIndex-0aa1c40e.js';
+import { t as toFinite_1 } from '../common/toFinite-3c87ca82.js';
+import { _ as _isIterateeCall } from '../common/_isIterateeCall-3d37a6e3.js';
+import '../common/_isIndex-ba156ebf.js';
 import '../common/_commonjsHelpers-7b5f3d4c.js';
 
 /**
@@ -29,11 +29,12 @@ import '../common/_commonjsHelpers-7b5f3d4c.js';
  * _.toInteger('3.2');
  * // => 3
  */
+
+
 function toInteger(value) {
   var result = toFinite_1(value),
       remainder = result % 1;
-
-  return result === result ? (remainder ? result - remainder : result) : 0;
+  return result === result ? remainder ? result - remainder : result : 0;
 }
 
 var toInteger_1 = toInteger;
@@ -52,18 +53,21 @@ function baseClamp(number, lower, upper) {
     if (upper !== undefined) {
       number = number <= upper ? number : upper;
     }
+
     if (lower !== undefined) {
       number = number >= lower ? number : lower;
     }
   }
+
   return number;
 }
 
 var _baseClamp = baseClamp;
 
 /** Used as references for the maximum length and index of an array. */
-var MAX_ARRAY_LENGTH = 4294967295;
 
+
+var MAX_ARRAY_LENGTH = 4294967295;
 /**
  * Converts `value` to an integer suitable for use as the length of an
  * array-like object.
@@ -91,6 +95,7 @@ var MAX_ARRAY_LENGTH = 4294967295;
  * _.toLength('3.2');
  * // => 3
  */
+
 function toLength(value) {
   return value ? _baseClamp(toInteger_1(value), 0, MAX_ARRAY_LENGTH) : 0;
 }
@@ -107,21 +112,28 @@ var toLength_1 = toLength;
  * @param {number} [end=array.length] The end position.
  * @returns {Array} Returns `array`.
  */
+
+
 function baseFill(array, value, start, end) {
   var length = array.length;
-
   start = toInteger_1(start);
+
   if (start < 0) {
-    start = -start > length ? 0 : (length + start);
+    start = -start > length ? 0 : length + start;
   }
-  end = (end === undefined || end > length) ? length : toInteger_1(end);
+
+  end = end === undefined || end > length ? length : toInteger_1(end);
+
   if (end < 0) {
     end += length;
   }
+
   end = start > end ? 0 : toLength_1(end);
+
   while (start < end) {
     array[start++] = value;
   }
+
   return array;
 }
 
@@ -156,15 +168,20 @@ var _baseFill = baseFill;
  * _.fill([4, 6, 8, 10], '*', 1, 3);
  * // => [4, '*', '*', 10]
  */
+
+
 function fill(array, value, start, end) {
   var length = array == null ? 0 : array.length;
+
   if (!length) {
     return [];
   }
+
   if (start && typeof start != 'number' && _isIterateeCall(array, value, start)) {
     start = 0;
     end = length;
   }
+
   return _baseFill(array, value, start, end);
 }
 

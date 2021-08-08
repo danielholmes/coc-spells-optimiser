@@ -18,7 +18,7 @@
  * // => true
  */
 function constant(value) {
-  return function() {
+  return function () {
     return value;
   };
 }

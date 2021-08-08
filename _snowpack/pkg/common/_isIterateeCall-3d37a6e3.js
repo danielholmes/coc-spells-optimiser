@@ -1,4 +1,4 @@
-import { i as isObject_1, a as isArrayLike_1, _ as _isIndex, e as eq_1 } from './_isIndex-0aa1c40e.js';
+import { i as isObject_1, a as isArrayLike_1, _ as _isIndex, e as eq_1 } from './_isIndex-ba156ebf.js';
 
 /**
  * Checks if the given arguments are from an iteratee call.
@@ -10,17 +10,19 @@ import { i as isObject_1, a as isArrayLike_1, _ as _isIndex, e as eq_1 } from '.
  * @returns {boolean} Returns `true` if the arguments are from an iteratee call,
  *  else `false`.
  */
+
+
 function isIterateeCall(value, index, object) {
   if (!isObject_1(object)) {
     return false;
   }
+
   var type = typeof index;
-  if (type == 'number'
-        ? (isArrayLike_1(object) && _isIndex(index, object.length))
-        : (type == 'string' && index in object)
-      ) {
+
+  if (type == 'number' ? isArrayLike_1(object) && _isIndex(index, object.length) : type == 'string' && index in object) {
     return eq_1(object[index], value);
   }
+
   return false;
 }
 

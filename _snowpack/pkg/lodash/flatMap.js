@@ -1,5 +1,5 @@
-import { _ as _baseIteratee, i as isArray_1, a as _arrayMap, b as _baseMap, c as _baseFlatten } from '../common/_baseMap-fc21b2a8.js';
-import '../common/_isIndex-0aa1c40e.js';
+import { _ as _baseIteratee, i as isArray_1, a as _arrayMap, b as _baseMap, c as _baseFlatten } from '../common/_baseMap-0f1fac3a.js';
+import '../common/_isIndex-ba156ebf.js';
 import '../common/_commonjsHelpers-7b5f3d4c.js';
 
 /**
@@ -44,6 +44,8 @@ import '../common/_commonjsHelpers-7b5f3d4c.js';
  * _.map(users, 'user');
  * // => ['barney', 'fred']
  */
+
+
 function map(collection, iteratee) {
   var func = isArray_1(collection) ? _arrayMap : _baseMap;
   return func(collection, _baseIteratee(iteratee));
@@ -72,6 +74,8 @@ var map_1 = map;
  * _.flatMap([1, 2], duplicate);
  * // => [1, 1, 2, 2]
  */
+
+
 function flatMap(collection, iteratee) {
   return _baseFlatten(map_1(collection, iteratee), 1);
 }
