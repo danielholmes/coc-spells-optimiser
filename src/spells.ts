@@ -3,22 +3,24 @@ import type {Defence} from "./layout";
 
 type SpellLevel = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
 
-interface Spell {
+interface BaseSpell {
   readonly level: SpellLevel;
   getDamage(defence: Defence, previousSpellHits: ReadonlyArray<Spell>): number;
 }
 
-interface LightningSpell extends Spell {
+interface LightningSpell extends BaseSpell {
   readonly type: "lightning";
 }
 
-interface EarthquakeSpell extends Spell {
+interface EarthquakeSpell extends BaseSpell {
   readonly type: "earthquake";
   readonly percent: number;
 }
 
+type Spell = LightningSpell | EarthquakeSpell;
+
 function isEarthquakeSpell(spell: Spell): spell is EarthquakeSpell {
-  return "type" in spell && (spell as any).type === "earthquake";
+  return "type" in spell && spell.type === "earthquake";
 }
 
 function createLightningSpell(level: SpellLevel, damage: number): LightningSpell {
