@@ -10,6 +10,7 @@ access to max level donation spells for your town hall level.
 
 ## Future Ideas
 
+ - Always include 1 non-cc option or ability to disable CC in calcs. Useful if taking out 2 sets of air ds.
  - Get some graphics in (e.g. army screen from in game)
  - Show how much damage done by each spell (useful for EQs)
  - Have a tool to put in an arbitrary set of spells to see total damage (able to explore some double eq options)
