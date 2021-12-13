@@ -2,13 +2,17 @@ import React, {useMemo, useState} from 'react';
 import useLocalStorage from 'react-use/lib/useLocalStorage';
 import { findOrThrow } from './array';
 import {townHallLevels} from "./townHallLevels";
-import {airDefenses} from "./layout";
+import {airDefenses, allDefences, Defence} from "./layout";
 import { findSolutions } from './solver';
+
+function getDefenceId(defence: Defence): string {
+  return `${defence.type}-${defence.level}`
+}
 
 function App() {
   const [townHallLevel, setTownHallLevel] = useLocalStorage("townHallLevel", 8);
   const townHall = findOrThrow(townHallLevels, t => t.level === townHallLevel);
-  const [defence, setDefence] = useState(airDefenses[6])
+  const [defence, setDefence] = useState<Defence>(airDefenses[5])
   const solutions = useMemo(
     () => findSolutions(
       townHall,
@@ -33,11 +37,15 @@ function App() {
         </div>
         <div>
           <label>Air Defence
-            <select value={defence.level} onChange={e => {
-              setDefence(airDefenses[parseInt(e.target.value, 10)])
+            <select value={getDefenceId(defence)} onChange={e => {
+              setDefence(
+                findOrThrow(allDefences, d => getDefenceId(d) === e.target.value)
+              )
             }}>
-              {Object.values(airDefenses).map(a => (
-                <option key={a.level} value={a.level}>Air Defence Lvl {a.level} ({a.hitpoints.toLocaleString()}HP)</option>
+              {allDefences.map(a => (
+                <option key={getDefenceId(a)} value={getDefenceId(a)}>
+                  {a.type} Lvl {a.level} ({a.hitpoints.toLocaleString()}HP, TH level {a.townHallLevel})
+                </option>
               ))}
             </select>
           </label>
@@ -50,13 +58,31 @@ function App() {
               <th rowSpan={2}>Score</th>
               <th colSpan={2}>Spell Factory</th>
               <th colSpan={2}>Clan Castle</th>
+              <th rowSpan={2}>Space</th>
               <th rowSpan={2}>Damage</th>
             </tr>
             <tr>
-            <th>Lightnings</th>
-            <th>Earthquakes</th>
-            <th>Lightnings</th>
-            <th>Earthquakes</th>
+            <th>
+              Lightnings ({townHall.spellFactory.availableLightning.getDamage(defence, [])})
+            </th>
+            <th>
+              Earthquakes{" "}
+              ({townHall.spellFactory.availableEarthquake
+              ? `${townHall.spellFactory.availableEarthquake.percent}% - ${townHall.spellFactory.availableEarthquake.getDamage(defence, [])}`
+              : "N/A"})
+            </th>
+            <th>
+              Lightnings{" "}
+              {townHall.clanCastle
+                ? `${townHall.clanCastle.availableLightning.getDamage(defence, [])}`
+                : "N/A"}
+            </th>
+            <th>
+            Earthquakes{" "}
+              ({townHall.clanCastle?.availableEarthquake
+              ? `${townHall.clanCastle.availableEarthquake.percent}% - ${townHall.clanCastle.availableEarthquake.getDamage(defence, [])}`
+              : "N/A"})
+            </th>
             </tr>
             </thead>
             <tbody>
@@ -67,6 +93,10 @@ function App() {
                 <td>{attack.spells.numEarthquake}</td>
                 <td>{attack.clanCastleSpells.numLightning}</td>
                 <td>{attack.clanCastleSpells.numEarthquake}</td>
+                <td>
+                  {attack.spells.numLightning + attack.spells.numEarthquake +
+                    attack.clanCastleSpells.numLightning + attack.clanCastleSpells.numEarthquake}
+                </td>
                 <td>{damage.toLocaleString()}</td>
               </tr>
             ))}
