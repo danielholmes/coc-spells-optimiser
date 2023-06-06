@@ -94,7 +94,33 @@ const townHallLevels: ReadonlyArray<TownHallLevel> = [
     },
     clanCastle: {
       amount: 2,
+      availableLightning: lightningSpells[10],
+      availableEarthquake: earthquakeSpells[5]
+    }
+  },
+  {
+    level: 14,
+    spellFactory: {
+      amount: 11,
       availableLightning: lightningSpells[9],
+      availableEarthquake: earthquakeSpells[5]
+    },
+    clanCastle: {
+      amount: 3,
+      availableLightning: lightningSpells[10],
+      availableEarthquake: earthquakeSpells[5]
+    }
+  },
+  {
+    level: 15,
+    spellFactory: {
+      amount: 11,
+      availableLightning: lightningSpells[10],
+      availableEarthquake: earthquakeSpells[5]
+    },
+    clanCastle: {
+      amount: 3,
+      availableLightning: lightningSpells[10],
       availableEarthquake: earthquakeSpells[5]
     }
   }
