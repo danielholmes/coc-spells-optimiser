@@ -39,7 +39,8 @@ const airDefenses = [
   createAirDefence(9, 1300, 11),
   createAirDefence(10, 1400, 12),
   createAirDefence(11, 1500, 13),
-  createAirDefence(12, 1600, 14),
+  createAirDefence(12, 1650, 14),
+  createAirDefence(13, 1750, 15),
 ];
 
 function createInfernoTower(level: number, hitpoints: number, townHallLevel: number): InfernoTower {
@@ -60,6 +61,7 @@ const infernoTowers = [
   createInfernoTower(6, 3_000, 12),
   createInfernoTower(7, 3_300, 13),
   createInfernoTower(8, 3_700, 14),
+  createInfernoTower(9, 4_000, 15),
 ];
 
 const allDefences = [
