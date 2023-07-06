@@ -1,5 +1,5 @@
 import { render } from 'preact';
-import App from './app-rename-1';
+import App from './app';
 import "./index.css";
 
 render(
