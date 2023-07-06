@@ -1,7 +1,7 @@
-import React, {useMemo, useState} from 'react';
+import {useMemo, useState} from 'preact/hooks';
 import useLocalStorage from 'react-use/lib/useLocalStorage';
 import { findOrThrow } from './array';
-import {townHallLevels} from "./townHallLevels";
+import {townHallLevels} from "./town-hall-levels";
 import {airDefenses, allDefences, Defence} from "./layout";
 import { findSolutions } from './solver';
 
@@ -73,9 +73,9 @@ function App() {
             </th>
             <th>
               Lightnings{" "}
-              {townHall.clanCastle
+              ({townHall.clanCastle
                 ? `${townHall.clanCastle.availableLightning.getDamage(defence, [])}`
-                : "N/A"}
+                : "N/A"})
             </th>
             <th>
             Earthquakes{" "}

@@ -1,4 +1,4 @@
-import fill from "lodash/fill";
+import { fill } from "lodash-es";
 
 function findOrThrow<T>(items: ReadonlyArray<T>, predicate: (item: T) => boolean): T {
   const index = items.findIndex(predicate);

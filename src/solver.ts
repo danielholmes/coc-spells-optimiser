@@ -1,7 +1,4 @@
-import range from "lodash/range";
-import flatMap from "lodash/flatMap";
-import reverse from "lodash/reverse";
-import sortBy from "lodash/sortBy";
+import { sortBy, flatMap, reverse, range } from "lodash-es";
 import {
   Attack, emptySpellComposition,
   SpellComposition,
@@ -9,13 +6,12 @@ import {
   totalCompositionSpells,
   totalEarthquakeSpells
 } from "./attack";
-import type {DefenderLayout} from "./layout";
-import type {SpellCapacity, TownHallLevel} from "./townHallLevels";
+import {DefenderLayout} from "./layout";
+import {SpellCapacity, TownHallLevel} from "./town-hall-levels";
 import {createArrayOf} from "./array";
-import type {Spell} from "./spells";
+import {Spell} from "./spells";
 
 function findAllSpellPermutationsForAmount(
-  capacity: SpellCapacity,
   amount: number
 ): ReadonlyArray<SpellComposition> {
   return range(0, amount + 1).map(numLightning => ({
@@ -30,7 +26,6 @@ function findAllSpellPermutations(
   return flatMap(
     range(0, capacity.amount + 1)
       .map(amount => findAllSpellPermutationsForAmount(
-        capacity,
         amount
       ))
   )

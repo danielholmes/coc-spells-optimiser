@@ -1,5 +1,5 @@
-import constant from "lodash/constant";
-import type {Defence} from "./layout";
+import { constant } from "lodash-es";
+import {Defence} from "./layout";
 
 type SpellLevel = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
 
