@@ -1,7 +1,7 @@
 import { constant } from "lodash-es";
 import {Defence} from "./layout";
 
-type SpellLevel = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
+type SpellLevel = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
 
 interface BaseSpell {
   readonly level: SpellLevel;
@@ -59,7 +59,8 @@ const lightningSpells = Object.fromEntries([
   createLightningSpell(7, 400),
   createLightningSpell(8, 480),
   createLightningSpell(9, 560),
-  createLightningSpell(10, 600)
+  createLightningSpell(10, 600),
+  createLightningSpell(11, 640)
 ].map(l => [l.level, l]));
 
 const earthquakeSpells = Object.fromEntries([
